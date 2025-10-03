@@ -2,11 +2,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { getAllEntries, getCoverPage } from '../lib/posts';
+import { getAllEntries, getCoverPage, getPrenibsPage } from '../lib/posts';
 import PrintButton from '../components/PrintButton';
 import Sidebar from '../components/Sidebar';
 
-export default function Home({ entries, coverPage }) {
+export default function Home({ entries, coverPage, prenibsPage }) {
   return (
     <>
       <Head>
@@ -39,6 +39,26 @@ export default function Home({ entries, coverPage }) {
                   }}
                 >
                   {coverPage.content}
+                </ReactMarkdown>
+              </div>
+            </article>
+          </div>
+        )}
+
+        {/* Prenibs Page Content */}
+        {prenibsPage && (
+          <div className="print-page prenibs-page" id="prenibs-page">
+            <article className="entry-content">
+              <div className="markdown-content">
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    img: ({node, ...props}) => (
+                      <img {...props} style={{maxWidth: '100%', height: 'auto'}} />
+                    ),
+                  }}
+                >
+                  {prenibsPage.content}
                 </ReactMarkdown>
               </div>
             </article>
@@ -103,7 +123,7 @@ export default function Home({ entries, coverPage }) {
         )}
 
         <footer className="no-print">
-          <p>Built with Next.js for VEX Robotics</p>
+          <p>© 2025 Sai Seelam. This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. You may use and adapt this work for educational purposes, but not for commercial use.</p>
         </footer>
       </main>
     </>
@@ -113,11 +133,13 @@ export default function Home({ entries, coverPage }) {
 export async function getStaticProps() {
   const entries = getAllEntries();
   const coverPage = getCoverPage();
+  const prenibsPage = getPrenibsPage();
 
   return {
     props: {
       entries,
       coverPage,
+      prenibsPage,
     },
   };
 }
