@@ -1,13 +1,10 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function PrintButton() {
-  const handlePrint = () => {
-    window.print();
-  };
-
   return (
-    <button onClick={handlePrint} className="print-button no-print">
+    <Link href="/print" className="print-button no-print">
       🖨️ Print / Export to PDF
-    </button>
+    </Link>
   );
 }
