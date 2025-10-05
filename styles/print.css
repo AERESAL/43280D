@@ -1,0 +1,297 @@
+/* Print Styles - Applied when printing or exporting to PDF */
+
+@media print {
+  /* Hide non-printable elements */
+  .no-print,
+  .print-button,
+  .breadcrumb,
+  nav,
+  footer,
+  .table-of-contents,
+  video,
+  iframe,
+  .video-wrapper,
+  .sidebar,
+  .sidebar-toggle,
+  .sidebar-toggle-mobile {
+    display: none !important;
+  }
+
+  /* Reset container margin for print */
+  .container.with-sidebar {
+    margin-left: 0 !important;
+  }
+
+  /* General print styles */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html,
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  /* Page setup */
+  @page {
+    size: letter;
+    margin: 0.75in;
+  }
+
+  /* Container adjustments */
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  /* Links */
+  a {
+    color: black !important;
+    text-decoration: none;
+  }
+
+  a[href]:after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  /* Prevent breaking inside elements */
+  img,
+  table,
+  figure,
+  blockquote,
+  pre {
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Headers */
+  header h1 {
+    font-size: 24pt;
+    color: black !important;
+    border-bottom: 2pt solid black;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .entry-header h1 {
+    font-size: 20pt;
+    color: black !important;
+  }
+
+  .entry-meta {
+    font-size: 10pt;
+    color: #333 !important;
+    margin-bottom: 1rem;
+  }
+
+  /* Markdown content adjustments */
+  .markdown-content {
+    font-size: 11pt;
+  }
+
+  .markdown-content h1 {
+    font-size: 18pt;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1pt solid #333;
+    padding-bottom: 0.25rem;
+  }
+
+  .markdown-content h2 {
+    font-size: 16pt;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content h3 {
+    font-size: 14pt;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content h4,
+  .markdown-content h5,
+  .markdown-content h6 {
+    font-size: 12pt;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content p {
+    margin: 0.5rem 0;
+    text-align: justify;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-content ul,
+  .markdown-content ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .markdown-content li {
+    margin: 0.25rem 0;
+  }
+
+  /* Code blocks */
+  .markdown-content code {
+    background: #f0f0f0 !important;
+    border: 1pt solid #ddd;
+    padding: 0.1rem 0.3rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+  }
+
+  .markdown-content pre {
+    background: #f5f5f5 !important;
+    border: 1pt solid #ccc;
+    padding: 0.5rem;
+    font-size: 9pt;
+    overflow: visible;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-content pre code {
+    background: none !important;
+    border: none;
+    padding: 0;
+  }
+
+  /* Tables */
+  .markdown-content table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 10pt;
+  }
+
+  .markdown-content table th,
+  .markdown-content table td {
+    border: 1pt solid #333;
+    padding: 0.4rem;
+  }
+
+  .markdown-content table th {
+    background: #e0e0e0 !important;
+    font-weight: bold;
+  }
+
+  /* Images */
+  .markdown-content img {
+    max-width: 100%;
+    height: auto;
+    page-break-inside: avoid;
+  }
+
+  /* Blockquotes */
+  .markdown-content blockquote {
+    border-left: 3pt solid #333;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+    font-style: italic;
+    color: #333 !important;
+  }
+
+  /* Horizontal rules */
+  .markdown-content hr {
+    border: none;
+    border-top: 1pt solid #333;
+    margin: 1rem 0;
+  }
+
+  /* Entry page break - each entry starts on new page */
+  .print-page {
+    page-break-before: always;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+
+  /* Reset styling for inline entries and cover */
+  .entry-page-inline,
+  .cover-page {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Cover page styling */
+  .cover-section {
+    page-break-after: always;
+  }
+
+  /* Special cover page styling - centered content */
+  .cover-page .markdown-content h1:first-of-type {
+    font-size: 28pt;
+    text-align: center;
+    margin-top: 3in;
+    margin-bottom: 0.5in;
+    border: none;
+  }
+
+  .cover-page .markdown-content h2 {
+    text-align: center;
+    font-size: 20pt;
+  }
+
+  .cover-page .markdown-content h3 {
+    text-align: center;
+    font-size: 16pt;
+    margin-top: 0.5in;
+  }
+
+  .cover-page .markdown-content hr {
+    width: 50%;
+    margin: 1in auto;
+  }
+
+  .cover-page .markdown-content p,
+  .cover-page .markdown-content ul {
+    text-align: center;
+    list-style-position: inside;
+  }
+
+  /* First entry shouldn't have page break before if it's right after cover */
+  .cover-page + .entry-page-inline {
+    page-break-before: always;
+  }
+
+  /* Page numbers */
+  @page {
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-size: 9pt;
+      color: #666;
+    }
+  }
+
+  /* Counter for pages */
+  body {
+    counter-reset: page;
+  }
+
+  .print-page {
+    counter-increment: page;
+  }
+}
